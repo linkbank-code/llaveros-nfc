@@ -1,1 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datos bancarios</title>
+<style>
+body{font-family:system-ui,Segoe UI,Roboto,Arial;background:#f4f6f8;margin:0;padding:16px}
+.card{max-width:520px;margin:auto;background:#e9f7ee;border-radius:14px;padding:16px}
+h2{margin:0 0 12px;font-size:18px}
+.row{display:flex;gap:8px;align-items:center;padding:10px 0;border-top:1px solid rgba(0,0,0,.1)}
+.row:first-of-type{border-top:0}
+.label{font-weight:700;min-width:150px}
+.value{flex:1;word-break:break-all}
+button{border:0;border-radius:10px;padding:8px 10px;font-weight:700;background:#2e7d32;color:#fff}
+button.ok{background:#1b5e20}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>Datos para transferencias</h2>
+
+<div class="row">
+  <div class="label">Nombre</div>
+  <div class="value" data-copy="DANIEL RAMIREZ">DANIEL RAMIREZ</div>
+  <button>Copiar</button>
+</div>
+
+<div class="row">
+  <div class="label">Banco</div>
+  <div class="value" data-copy="Banco BHD">Banco BHD</div>
+  <button>Copiar</button>
+</div>
+
+<div class="row">
+  <div class="label">Tipo</div>
+  <div class="value" data-copy="Cuenta de ahorros">Cuenta de ahorros</div>
+  <button>Copiar</button>
+</div>
+
+<div class="row">
+  <div class="label">Cuenta RD$</div>
+  <div class="value" data-copy="14530990040">14530990040</div>
+  <button>Copiar</button>
+</div>
+
+<div class="row">
+  <div class="label">Cuenta estándar</div>
+  <div class="value" data-copy="D079BCBH000000000014530990040">D079BCBH000000000014530990040</div>
+  <button>Copiar</button>
+</div>
+</div>
+
+<script>
+document.querySelectorAll(".row").forEach(r=>{
+  const v=r.querySelector(".value"),b=r.querySelector("button");
+  b.onclick=async()=>{
+    try{
+      await navigator.clipboard.writeText(v.dataset.copy);
+      b.textContent="✓";
+      b.classList.add("ok");
+      setTimeout(()=>{b.textContent="Copiar";b.classList.remove("ok")},800);
+    }catch(e){alert("Mantén presionado para copiar");}
+  }
+});
+</script>
+</body>
+</html>
 
