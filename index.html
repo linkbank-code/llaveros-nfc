@@ -4,66 +4,175 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Datos bancarios</title>
+
 <style>
-body{font-family:system-ui,Segoe UI,Roboto,Arial;background:#f4f6f8;margin:0;padding:16px}
-.card{max-width:520px;margin:auto;background:#e9f7ee;border-radius:14px;padding:16px}
-h2{margin:0 0 12px;font-size:18px}
-.row{display:flex;gap:8px;align-items:center;padding:10px 0;border-top:1px solid rgba(0,0,0,.1)}
-.row:first-of-type{border-top:0}
-.label{font-weight:700;min-width:150px}
-.value{flex:1;word-break:break-all}
-button{border:0;border-radius:10px;padding:8px 10px;font-weight:700;background:#2e7d32;color:#fff}
-button.ok{background:#1b5e20}
+:root{
+  --bhd-green:#63b445;
+  --bhd-blue:#1f3b6d;
+  --bg:#f2f4f7;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:linear-gradient(180deg,var(--bg),#ffffff);
+  padding:20px;
+}
+
+.card{
+  max-width:520px;
+  margin:auto;
+  background:#ffffff;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+
+.header{
+  background:linear-gradient(135deg,var(--bhd-green),#7fd35f);
+  padding:18px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.header img{
+  height:46px;
+  background:#fff;
+  padding:6px 10px;
+  border-radius:10px;
+}
+
+.header h1{
+  font-size:16px;
+  margin:0;
+  color:#ffffff;
+  font-weight:700;
+}
+
+.content{
+  padding:18px;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+}
+
+.row:last-child{border-bottom:none}
+
+.label{
+  min-width:140px;
+  font-weight:700;
+  color:#333;
+}
+
+.value{
+  flex:1;
+  word-break:break-all;
+  color:#111;
+}
+
+button{
+  border:none;
+  background:var(--bhd-blue);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button.ok{
+  background:#2e7d32;
+}
+
+.footer{
+  padding:14px;
+  text-align:center;
+  font-size:12px;
+  color:#777;
+  background:#fafafa;
+}
 </style>
 </head>
+
 <body>
+
 <div class="card">
-<h2>Datos para transferencias</h2>
 
-<div class="row">
-  <div class="label">Nombre</div>
-  <div class="value" data-copy="DANIEL RAMIREZ">DANIEL RAMIREZ</div>
-  <button>Copiar</button>
-</div>
+  <div class="header">
+    <img src="logo-bhd.png" alt="Banco BHD">
+    <h1>Datos para transferencias</h1>
+  </div>
 
-<div class="row">
-  <div class="label">Banco</div>
-  <div class="value" data-copy="Banco BHD">Banco BHD</div>
-  <button>Copiar</button>
-</div>
+  <div class="content">
 
-<div class="row">
-  <div class="label">Tipo</div>
-  <div class="value" data-copy="Cuenta de ahorros">Cuenta de ahorros</div>
-  <button>Copiar</button>
-</div>
+    <div class="row">
+      <div class="label">Nombre</div>
+      <div class="value" data-copy="DANIEL RAMIREZ">DANIEL RAMIREZ</div>
+      <button>Copiar</button>
+    </div>
 
-<div class="row">
-  <div class="label">Cuenta RD$</div>
-  <div class="value" data-copy="14530990040">14530990040</div>
-  <button>Copiar</button>
-</div>
+    <div class="row">
+      <div class="label">Banco</div>
+      <div class="value" data-copy="Banco BHD">Banco BHD</div>
+      <button>Copiar</button>
+    </div>
 
-<div class="row">
-  <div class="label">Cuenta estándar</div>
-  <div class="value" data-copy="D079BCBH000000000014530990040">D079BCBH000000000014530990040</div>
-  <button>Copiar</button>
-</div>
+    <div class="row">
+      <div class="label">Tipo</div>
+      <div class="value" data-copy="Cuenta de ahorros">Cuenta de ahorros</div>
+      <button>Copiar</button>
+    </div>
+
+    <div class="row">
+      <div class="label">Cuenta RD$</div>
+      <div class="value" data-copy="14530990040">14530990040</div>
+      <button>Copiar</button>
+    </div>
+
+    <div class="row">
+      <div class="label">Cuenta estándar</div>
+      <div class="value" data-copy="D079BCBH000000000014530990040">
+        D079BCBH000000000014530990040
+      </div>
+      <button>Copiar</button>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Banco BHD · Transferencias interbancarias
+  </div>
+
 </div>
 
 <script>
 document.querySelectorAll(".row").forEach(r=>{
-  const v=r.querySelector(".value"),b=r.querySelector("button");
+  const v=r.querySelector(".value");
+  const b=r.querySelector("button");
   b.onclick=async()=>{
     try{
       await navigator.clipboard.writeText(v.dataset.copy);
       b.textContent="✓";
       b.classList.add("ok");
-      setTimeout(()=>{b.textContent="Copiar";b.classList.remove("ok")},800);
-    }catch(e){alert("Mantén presionado para copiar");}
+      setTimeout(()=>{
+        b.textContent="Copiar";
+        b.classList.remove("ok");
+      },900);
+    }catch{
+      alert("Mantén presionado el texto para copiar");
+    }
   }
 });
 </script>
+
 </body>
 </html>
 
