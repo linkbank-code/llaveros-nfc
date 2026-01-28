@@ -6,76 +6,72 @@
 <title>Contacto</title>
 <style>
 :root{
-  --brand:#1f3b6d;
-  --accent:#63b445;
-  --bg:#f2f4f7;
+  --bg:#f3f4f6;
+  --ink:#0b0b0c;
+  --muted:#5b5b60;
+  --card:#ffffff;
+  --line:#e8e8ec;
 }
 *{box-sizing:border-box}
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:linear-gradient(180deg,var(--bg),#fff);
+  background:radial-gradient(900px 500px at 20% 0%, #ffffff, var(--bg));
   padding:20px;
+  color:var(--ink);
 }
 .card{
   max-width:520px;
   margin:auto;
-  background:#fff;
+  background:var(--card);
   border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  box-shadow:0 12px 34px rgba(0,0,0,.10);
   overflow:hidden;
+  border:1px solid var(--line);
 }
 .header{
-  background:linear-gradient(135deg,var(--brand),#2b57a6);
-  padding:18px;
+  padding:18px 18px 14px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:12px;
+  gap:14px;
+  border-bottom:1px solid var(--line);
+  background:#fff;
 }
-.header .title{
-  color:#fff;
+.header img{
+  width:54px;
+  height:54px;
+  border-radius:14px;
+  object-fit:cover;
+  border:1px solid var(--line);
 }
-.header h1{
+.title h1{
   margin:0;
   font-size:18px;
-  font-weight:800;
+  font-weight:900;
+  letter-spacing:.2px;
 }
-.header p{
+.title p{
   margin:4px 0 0;
-  opacity:.85;
+  color:var(--muted);
   font-size:13px;
 }
-.badge{
-  background:rgba(255,255,255,.18);
-  border:1px solid rgba(255,255,255,.22);
-  color:#fff;
-  padding:8px 10px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:12px;
-  white-space:nowrap;
-}
 .content{padding:18px}
-.info{
-  display:grid;
-  gap:10px;
-  margin-bottom:16px;
-}
 .row{
   display:flex;
   gap:10px;
   align-items:center;
-  padding:10px 12px;
-  border:1px solid #eee;
+  padding:11px 12px;
+  border:1px solid var(--line);
   border-radius:14px;
   background:#fafafa;
+  margin-bottom:10px;
 }
-.label{min-width:90px; font-weight:800; color:#333}
+.label{min-width:90px; font-weight:900}
 .value{flex:1; word-break:break-word; color:#111}
 .actions{
   display:grid;
   gap:10px;
+  margin-top:6px;
 }
 .btn{
   display:flex;
@@ -85,18 +81,22 @@ body{
   width:100%;
   padding:12px 14px;
   border-radius:14px;
-  border:0;
+  border:1px solid var(--line);
   cursor:pointer;
-  font-weight:800;
+  font-weight:900;
   font-size:15px;
   text-decoration:none;
+  background:#fff;
+  color:#111;
 }
-.btn.primary{background:var(--accent); color:#fff}
-.btn.dark{background:var(--brand); color:#fff}
-.btn.ghost{background:#fff; color:#111; border:1px solid #e8e8e8}
+.btn.dark{
+  background:var(--ink);
+  border-color:var(--ink);
+  color:#fff;
+}
 .small{
   margin-top:12px;
-  color:#666;
+  color:var(--muted);
   font-size:12px;
   text-align:center;
 }
@@ -106,35 +106,32 @@ body{
 
 <div class="card">
   <div class="header">
+    <img src="logo-bsd.png" alt="BSD">
     <div class="title">
       <h1>Beachside Design</h1>
       <p>Contacto rápido (NFC)</p>
     </div>
-    <div class="badge">vCard + acciones</div>
   </div>
 
   <div class="content">
-    <div class="info">
-      <div class="row">
-        <div class="label">Tel</div>
-        <div class="value" id="phoneDisplay">+1 809 715 0850</div>
-      </div>
-      <div class="row">
-        <div class="label">WhatsApp</div>
-        <div class="value" id="waDisplay">+18097150850</div>
-      </div>
+    <div class="row">
+      <div class="label">Tel</div>
+      <div class="value">+1 809 715 0850</div>
+    </div>
+
+    <div class="row">
+      <div class="label">WhatsApp</div>
+      <div class="value">+1 809 715 0850</div>
     </div>
 
     <div class="actions">
-      <a class="btn dark" id="callBtn" href="tel:+18097150850">📞 Llamar</a>
-      <a class="btn primary" id="waBtn" href="https://wa.me/18097150850">💬 WhatsApp</a>
-
-      <!-- Esto descarga el contacto como .vcf: funciona en iPhone/Android -->
-      <button class="btn ghost" id="saveBtn">💾 Guardar contacto</button>
+      <a class="btn dark" href="tel:+18097150850">📞 Llamar</a>
+      <a class="btn" href="https://wa.me/18097150850">💬 WhatsApp</a>
+      <button class="btn" id="saveBtn">💾 Guardar contacto</button>
     </div>
 
     <div class="small">
-      En iPhone: abre y toca “Agregar contacto”. En Android: suele guardar directo.
+      iPhone: abre y toca “Agregar contacto”. Android: suele guardar directo.
     </div>
   </div>
 </div>
@@ -148,7 +145,6 @@ const contact = {
 };
 
 function makeVCF(c){
-  // vCard 3.0, compatible
   return [
     "BEGIN:VCARD",
     "VERSION:3.0",
@@ -166,7 +162,7 @@ document.getElementById("saveBtn").addEventListener("click", ()=>{
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "contacto.vcf";
+  a.download = "Beachside-Design.vcf";
   document.body.appendChild(a);
   a.click();
   a.remove();
