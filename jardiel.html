@@ -7,19 +7,21 @@
 
 <style>
 :root{
-  --nameBlue:#0b3c6f;     /* Azul correcto del nombre */
-  --electric:#ffe600;     /* Amarillo eléctrico */
+  --blue:#1f6fb2;          /* AZUL REAL DEL LOGO */
+  --yellow:#ffe600;        /* Amarillo eléctrico */
   --card:#ffffff;
   --line:#e5e7eb;
 }
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:var(--electric);
+  background:var(--yellow);
   padding:22px;
   color:#000;
 }
+
 .card{
   max-width:520px;
   margin:auto;
@@ -28,29 +30,35 @@ body{
   box-shadow:0 18px 45px rgba(0,0,0,.18);
   overflow:hidden;
 }
+
 .header{
-  padding:26px 22px 20px;
+  padding:28px 22px 22px;
   text-align:center;
 }
+
 .header img{
-  max-width:260px;
+  max-width:280px;
   width:100%;
   height:auto;
   margin-bottom:18px;
 }
+
 .header h1{
   margin:0;
   font-size:22px;
   font-weight:900;
-  color:var(--nameBlue);
+  color:var(--blue);       /* MISMO AZUL DEL LOGO */
 }
+
 .header p{
   margin:6px 0 0;
   font-size:14px;
   color:#000;
   line-height:1.35;
 }
+
 .content{padding:18px 22px 22px}
+
 .row{
   display:flex;
   align-items:center;
@@ -62,37 +70,47 @@ body{
   background:#fafafa;
   margin-bottom:12px;
 }
+
 .text b{
   display:block;
   font-size:12px;
   color:#000;
   margin-bottom:3px;
 }
+
 .text span{
   font-size:15px;
   font-weight:700;
   color:#000;
 }
 
-/* Botones: MISMO azul del nombre, metálico */
+/* BOTONES: MISMO AZUL DEL LOGO + METÁLICO */
 button{
   border:none;
   border-radius:14px;
   padding:10px 16px;
   font-size:13px;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
-  color:#fff;
-  background:linear-gradient(145deg,#1a5fa8,var(--nameBlue));
+  color:#ffffff;
+  background:
+    linear-gradient(
+      145deg,
+      #3c8fd8,
+      var(--blue),
+      #155a96
+    );
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.25),
-    0 5px 12px rgba(11,60,111,.45);
+    inset 0 1px 0 rgba(255,255,255,.35),
+    inset 0 -2px 4px rgba(0,0,0,.25),
+    0 6px 14px rgba(31,111,178,.45);
 }
+
 button:active{
   transform:translateY(1px);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.2),
-    0 3px 8px rgba(11,60,111,.45);
+    inset 0 1px 0 rgba(255,255,255,.25),
+    0 3px 8px rgba(31,111,178,.5);
 }
 
 .actions{
@@ -100,6 +118,7 @@ button:active{
   gap:14px;
   margin-top:6px;
 }
+
 .btn{
   display:flex;
   align-items:center;
@@ -113,10 +132,17 @@ button:active{
   text-decoration:none;
   cursor:pointer;
   color:#fff;
-  background:linear-gradient(145deg,#1a5fa8,var(--nameBlue));
+  background:
+    linear-gradient(
+      145deg,
+      #3c8fd8,
+      var(--blue),
+      #155a96
+    );
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.25),
-    0 7px 18px rgba(11,60,111,.5);
+    inset 0 1px 0 rgba(255,255,255,.35),
+    inset 0 -2px 4px rgba(0,0,0,.25),
+    0 8px 18px rgba(31,111,178,.55);
 }
 
 .footer{
