@@ -7,20 +7,20 @@
 
 <style>
 :root{
-  --blue:#0b3c6f;     /* Azul corporativo */
-  --red:#c51f2d;      /* Rojo acento */
-  --bg:#f4f6f9;
+  --blue:#0b3c6f;           /* Azul del nombre */
+  --yellow:#fff4cc;         /* Amarillo claro de fondo */
+  --bg:#fff9e6;
   --card:#ffffff;
-  --muted:#6b7280;
+  --muted:#555555;
   --line:#e5e7eb;
 }
 *{box-sizing:border-box}
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:linear-gradient(180deg,#ffffff,var(--bg));
+  background:linear-gradient(180deg,var(--yellow),var(--bg));
   padding:20px;
-  color:#0b0b0c;
+  color:#000000;            /* Texto negro */
 }
 .card{
   max-width:520px;
@@ -29,17 +29,16 @@ body{
   border-radius:20px;
   box-shadow:0 16px 40px rgba(0,0,0,.12);
   overflow:hidden;
-  border-top:6px solid var(--red);
 }
 .header{
-  padding:24px 20px 18px;
+  padding:26px 20px 20px;
   text-align:center;
 }
 .header img{
   max-width:260px;
   width:100%;
   height:auto;
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 .header h1{
   margin:0;
@@ -50,7 +49,7 @@ body{
 .header p{
   margin:6px 0 0;
   font-size:14px;
-  color:var(--muted);
+  color:#000;
   line-height:1.35;
 }
 .content{
@@ -70,25 +69,33 @@ body{
 .text b{
   display:block;
   font-size:12px;
-  color:var(--muted);
+  color:#000;
   margin-bottom:3px;
 }
 .text span{
   font-size:15px;
   font-weight:700;
-  color:#111;
+  color:#000;
 }
 button{
   border:none;
-  border-radius:12px;
-  padding:9px 14px;
+  border-radius:14px;
+  padding:10px 16px;
   font-size:13px;
   font-weight:800;
   cursor:pointer;
+  color:#ffffff;            /* Texto blanco */
+  background:
+    linear-gradient(145deg,#1f5fa5,#0b3c6f); /* Azul metálico */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.25),
+    0 4px 10px rgba(11,60,111,.35);
 }
-.copy{
-  background:var(--blue);
-  color:#fff;
+button:active{
+  transform:translateY(1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    0 2px 6px rgba(11,60,111,.4);
 }
 .actions{
   display:grid;
@@ -101,28 +108,25 @@ button{
   justify-content:center;
   gap:10px;
   width:100%;
-  padding:14px;
-  border-radius:14px;
+  padding:15px;
+  border-radius:16px;
   font-weight:900;
   font-size:15px;
   text-decoration:none;
   cursor:pointer;
-}
-.btn.call{
-  background:var(--blue);
-  color:#fff;
-}
-.btn.save{
-  background:#fff;
-  color:var(--blue);
-  border:2px solid var(--blue);
+  color:#ffffff;
+  background:
+    linear-gradient(145deg,#1f5fa5,#0b3c6f);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.25),
+    0 6px 14px rgba(11,60,111,.4);
 }
 .footer{
   text-align:center;
   padding:14px;
   font-size:12px;
-  color:var(--muted);
-  background:#fafafa;
+  color:#000;
+  background:#fffdf2;
   border-top:1px solid var(--line);
 }
 </style>
@@ -148,7 +152,7 @@ button{
         <b>Teléfono</b>
         <span>809-747-8057</span>
       </div>
-      <button class="copy" onclick="copyText('8097478057')">Copiar</button>
+      <button onclick="copyText('8097478057')">Copiar</button>
     </div>
 
     <div class="row">
@@ -156,12 +160,12 @@ button{
         <b>Horario</b>
         <span>9:00 am – 6:00 pm</span>
       </div>
-      <button class="copy" onclick="copyText('Disponible de 9:00 am a 6:00 pm')">Copiar</button>
+      <button onclick="copyText('Disponible de 9:00 am a 6:00 pm')">Copiar</button>
     </div>
 
     <div class="actions">
-      <a class="btn call" href="tel:+18097478057">📞 Llamar ahora</a>
-      <button class="btn save" id="saveBtn">💾 Guardar contacto</button>
+      <a class="btn" href="tel:+18097478057">📞 Llamar ahora</a>
+      <button class="btn" id="saveBtn">💾 Guardar contacto</button>
     </div>
 
   </div>
@@ -212,9 +216,6 @@ document.getElementById("saveBtn").addEventListener("click", ()=>{
   setTimeout(()=>URL.revokeObjectURL(url), 500);
 });
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
