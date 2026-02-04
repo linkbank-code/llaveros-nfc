@@ -1,123 +1,135 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Datos bancarios - La Nacional</title>
-
-  <style>
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background:#f4f6f8;
-      padding:16px;
-    }
-    .card{
-      max-width:520px;
-      margin:auto;
-      background:#fff;
-      border-radius:16px;
-      padding:20px;
-      box-shadow:0 10px 25px rgba(0,0,0,.08);
-    }
-    .logo{
-      text-align:center;
-      margin-bottom:20px;
-    }
-    .logo img{
-      max-width:220px;
-    }
-    h2{
-      text-align:center;
-      margin:0 0 16px;
-    }
-    .item{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      background:#f1f3f5;
-      border-radius:10px;
-      padding:12px;
-      margin-bottom:10px;
-      gap:10px;
-    }
-    .label{
-      font-size:13px;
-      color:#555;
-    }
-    .value{
-      font-weight:600;
-      word-break:break-all;
-    }
-    button{
-      border:none;
-      background:#0d6efd;
-      color:#fff;
-      padding:8px 12px;
-      border-radius:8px;
-      cursor:pointer;
-      font-size:13px;
-    }
-    button:active{opacity:.8}
-    footer{
-      text-align:center;
-      font-size:12px;
-      color:#888;
-      margin-top:14px;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datos bancarios – La Nacional</title>
+<style>
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    background:#f4f6f8;
+    margin:0;
+    padding:16px;
+  }
+  .card{
+    max-width:520px;
+    margin:auto;
+    background:#ffffff;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+  }
+  .logo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:10px;
+  }
+  .logo img{max-width:180px}
+  h1{
+    text-align:center;
+    margin:8px 0 18px;
+    font-size:22px;
+  }
+  .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#f1f3f5;
+    border-radius:12px;
+    padding:12px 14px;
+    margin-bottom:10px;
+    gap:10px;
+  }
+  .text{
+    font-size:14px;
+    line-height:1.25;
+  }
+  .text b{display:block;font-size:13px;color:#555}
+  button{
+    background:#0d6efd;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:8px 14px;
+    font-size:13px;
+    cursor:pointer;
+  }
+  .footer{
+    text-align:center;
+    margin-top:12px;
+    font-size:12px;
+    color:#777;
+  }
+</style>
 </head>
-
 <body>
-  <div class="card">
-    <div class="logo">
-      <img src="logo_la_nacional.png" alt="La Nacional">
-    </div>
 
-    <h2>Datos bancarios</h2>
-
-    <div class="item">
-      <div>
-        <div class="label">Banco</div>
-        <div class="value" id="banco">El Banco La Nacional</div>
-      </div>
-      <button onclick="copiar('banco')">Copiar</button>
-    </div>
-
-    <div class="item">
-      <div>
-        <div class="label">Número de producto</div>
-        <div class="value" id="producto">1460896385</div>
-      </div>
-      <button onclick="copiar('producto')">Copiar</button>
-    </div>
-
-    <div class="item">
-      <div>
-        <div class="label">Moneda</div>
-        <div class="value" id="moneda">DOP</div>
-      </div>
-      <button onclick="copiar('moneda')">Copiar</button>
-    </div>
-
-    <div class="item">
-      <div>
-        <div class="label">Sucursal</div>
-        <div class="value" id="sucursal">MULTIPLAZA HIGUEY</div>
-      </div>
-      <button onclick="copiar('sucursal')">Copiar</button>
-    </div>
-
-    <footer>
-      Escanea · Copia · Pega
-    </footer>
+<div class="card">
+  <div class="logo">
+    <img src="logo_la_nacional.png" alt="La Nacional">
   </div>
 
-  <script>
-    function copiar(id){
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text);
-    }
-  </script>
+  <h1>Datos bancarios</h1>
+
+  <div class="row">
+    <div class="text">
+      <b>Titular</b>
+      Daniel Ramirez
+    </div>
+    <button onclick="copyText('Daniel Ramirez')">Copiar</button>
+  </div>
+
+  <div class="row">
+    <div class="text">
+      <b>Banco</b>
+      La Nacional de Ahorros y Préstamos
+    </div>
+    <button onclick="copyText('La Nacional de Ahorros y Préstamos')">Copiar</button>
+  </div>
+
+  <div class="row">
+    <div class="text">
+      <b>Tipo de cuenta</b>
+      Cuenta de Ahorro
+    </div>
+    <button onclick="copyText('Cuenta de Ahorro')">Copiar</button>
+  </div>
+
+  <div class="row">
+    <div class="text">
+      <b>Número de producto</b>
+      1460896385
+    </div>
+    <button onclick="copyText('1460896385')">Copiar</button>
+  </div>
+
+  <div class="row">
+    <div class="text">
+      <b>Moneda</b>
+      DOP
+    </div>
+    <button onclick="copyText('DOP')">Copiar</button>
+  </div>
+
+  <div class="row">
+    <div class="text">
+      <b>Sucursal</b>
+      MULTIPLAZA HIGUEY
+    </div>
+    <button onclick="copyText('MULTIPLAZA HIGUEY')">Copiar</button>
+  </div>
+
+  <div class="footer">
+    Escanea · Copia · Pega
+  </div>
+</div>
+
+<script>
+function copyText(t){
+  navigator.clipboard.writeText(t);
+}
+</script>
+
 </body>
 </html>
+
