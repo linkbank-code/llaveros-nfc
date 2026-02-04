@@ -7,84 +7,92 @@
 
 <style>
 :root{
-  --ink:#0b0b0c;
-  --muted:#6b7280;
-  --bg:#f3f4f6;
+  --blue:#0b3c6f;     /* Azul corporativo */
+  --red:#c51f2d;      /* Rojo acento */
+  --bg:#f4f6f9;
   --card:#ffffff;
+  --muted:#6b7280;
   --line:#e5e7eb;
-  --accent:#111111;
 }
 *{box-sizing:border-box}
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:linear-gradient(180deg,#fff,var(--bg));
-  padding:18px;
-  color:var(--ink);
+  background:linear-gradient(180deg,#ffffff,var(--bg));
+  padding:20px;
+  color:#0b0b0c;
 }
 .card{
   max-width:520px;
   margin:auto;
   background:var(--card);
-  border-radius:18px;
-  border:1px solid var(--line);
-  box-shadow:0 14px 36px rgba(0,0,0,.10);
+  border-radius:20px;
+  box-shadow:0 16px 40px rgba(0,0,0,.12);
   overflow:hidden;
+  border-top:6px solid var(--red);
 }
 .header{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  padding:18px;
-  border-bottom:1px solid var(--line);
+  padding:24px 20px 18px;
+  text-align:center;
 }
 .header img{
-  width:56px;height:56px;
-  border-radius:14px;
-  object-fit:contain;
-  border:1px solid var(--line);
-  background:#fff;
-  padding:6px;
+  max-width:260px;
+  width:100%;
+  height:auto;
+  margin-bottom:16px;
 }
-.title h1{
+.header h1{
   margin:0;
-  font-size:20px;
+  font-size:22px;
   font-weight:900;
+  color:var(--blue);
 }
-.title p{
-  margin:4px 0 0;
+.header p{
+  margin:6px 0 0;
+  font-size:14px;
   color:var(--muted);
-  font-size:13px;
+  line-height:1.35;
 }
-.content{padding:18px}
-.info{
-  display:grid;
-  gap:10px;
-  margin-bottom:14px;
+.content{
+  padding:18px 20px 20px;
 }
 .row{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
-  padding:12px 14px;
+  gap:12px;
+  padding:14px 16px;
   border:1px solid var(--line);
   border-radius:14px;
   background:#fafafa;
+  margin-bottom:12px;
 }
 .text b{
   display:block;
   font-size:12px;
   color:var(--muted);
-  margin-bottom:2px;
+  margin-bottom:3px;
 }
 .text span{
   font-size:15px;
   font-weight:700;
+  color:#111;
+}
+button{
+  border:none;
+  border-radius:12px;
+  padding:9px 14px;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+}
+.copy{
+  background:var(--blue);
+  color:#fff;
 }
 .actions{
   display:grid;
-  gap:10px;
+  gap:12px;
   margin-top:6px;
 }
 .btn{
@@ -93,23 +101,21 @@ body{
   justify-content:center;
   gap:10px;
   width:100%;
-  padding:13px 14px;
+  padding:14px;
   border-radius:14px;
-  border:1px solid var(--line);
-  background:#fff;
-  color:#111;
   font-weight:900;
   font-size:15px;
-  cursor:pointer;
   text-decoration:none;
+  cursor:pointer;
 }
-.btn.primary{
-  background:var(--accent);
-  border-color:var(--accent);
+.btn.call{
+  background:var(--blue);
   color:#fff;
 }
-.btn.ghost{
+.btn.save{
   background:#fff;
+  color:var(--blue);
+  border:2px solid var(--blue);
 }
 .footer{
   text-align:center;
@@ -125,37 +131,39 @@ body{
 <body>
 
 <div class="card">
+
   <div class="header">
-    <img src="logo_la_nacional.png" alt="La Nacional">
-    <div class="title">
-      <h1>Jardiel Aristy</h1>
-      <p>Gerente · La Nacional de Ahorros y Préstamos<br>Sucursal Multiplaza La Sirena Higüey</p>
-    </div>
+    <img src="logo_la_nacional.png" alt="La Nacional de Ahorros y Préstamos">
+    <h1>Jardiel Aristy</h1>
+    <p>
+      Gerente · La Nacional de Ahorros y Préstamos<br>
+      Sucursal Multiplaza La Sirena Higüey
+    </p>
   </div>
 
   <div class="content">
-    <div class="info">
-      <div class="row">
-        <div class="text">
-          <b>Teléfono</b>
-          <span>809-747-8057</span>
-        </div>
-        <button class="btn ghost" onclick="copyText('8097478057')">Copiar</button>
-      </div>
 
-      <div class="row">
-        <div class="text">
-          <b>Horario</b>
-          <span>9:00 am – 6:00 pm</span>
-        </div>
-        <button class="btn ghost" onclick="copyText('Disponible de 9:00 am a 6:00 pm')">Copiar</button>
+    <div class="row">
+      <div class="text">
+        <b>Teléfono</b>
+        <span>809-747-8057</span>
       </div>
+      <button class="copy" onclick="copyText('8097478057')">Copiar</button>
+    </div>
+
+    <div class="row">
+      <div class="text">
+        <b>Horario</b>
+        <span>9:00 am – 6:00 pm</span>
+      </div>
+      <button class="copy" onclick="copyText('Disponible de 9:00 am a 6:00 pm')">Copiar</button>
     </div>
 
     <div class="actions">
-      <a class="btn primary" href="tel:+18097478057">📞 Llamar ahora</a>
-      <button class="btn" id="saveBtn">💾 Guardar contacto</button>
+      <a class="btn call" href="tel:+18097478057">📞 Llamar ahora</a>
+      <button class="btn save" id="saveBtn">💾 Guardar contacto</button>
     </div>
+
   </div>
 
   <div class="footer">
