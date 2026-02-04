@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto – Jardiel Aristy</title>
+
+<style>
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    background:#f4f6f8;
+    margin:0;
+    padding:16px;
+  }
+  .card{
+    max-width:520px;
+    margin:auto;
+    background:#ffffff;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+  }
+  h1{
+    text-align:center;
+    font-size:22px;
+    margin-bottom:6px;
+  }
+  h2{
+    text-align:center;
+    font-size:14px;
+    font-weight:normal;
+    color:#555;
+    margin-top:0;
+    margin-bottom:20px;
+  }
+  .row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f1f3f5;
+    border-radius:12px;
+    padding:12px 14px;
+    margin-bottom:10px;
+    gap:10px;
+  }
+  .text{
+    font-size:14px;
+  }
+  .text b{
+    display:block;
+    font-size:13px;
+    color:#555;
+  }
+  button{
+    background:#0d6efd;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:8px 14px;
+    font-size:13px;
+    cursor:pointer;
+  }
+  .call{
+    display:block;
+    margin-top:14px;
+    text-align:center;
+    background:#198754;
+    color:#fff;
+    padding:12px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+  }
+  .footer{
+    text-align:center;
+    margin-top:12px;
+    font-size:12px;
+    color:#777;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <h1>Jardiel Aristy</h1>
+  <h2>Gerente · La Nacional<br>Sucursal Multiplaza La Sirena Higüey</h2>
+
+  <div class="row">
+    <div class="text">
+      <b>Teléfono</b>
+      809-747-8057
+    </div>
+    <button onclick="copyText('8097478057')">Copiar</button>
+  </div>
+
+  <div class="row">
+    <div class="text">
+      <b>Horario</b>
+      9:00 am – 6:00 pm
+    </div>
+    <button onclick="copyText('Disponible de 9:00 am a 6:00 pm')">Copiar</button>
+  </div>
+
+  <a class="call" href="tel:+18097478057">📞 Llamar ahora</a>
+
+  <div class="footer">
+    Escanea · Guarda · Llama
+  </div>
+
+</div>
+
+<script>
+function copyText(t){
+  navigator.clipboard.writeText(t);
+}
+</script>
+
+</body>
+</html>
