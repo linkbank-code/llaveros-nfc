@@ -7,9 +7,8 @@
 
 <style>
 :root{
-  --nameBlue:#0b3c6f;     /* AZUL DEL NOMBRE (correcto) */
-  --yellow:#fff4cc;
-  --bg:#fff9e6;
+  --nameBlue:#0b3c6f;     /* Azul correcto del nombre */
+  --electric:#ffe600;     /* Amarillo eléctrico */
   --card:#ffffff;
   --line:#e5e7eb;
 }
@@ -17,20 +16,20 @@
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:linear-gradient(180deg,var(--yellow),var(--bg));
-  padding:20px;
+  background:var(--electric);
+  padding:22px;
   color:#000;
 }
 .card{
   max-width:520px;
   margin:auto;
   background:var(--card);
-  border-radius:20px;
-  box-shadow:0 16px 40px rgba(0,0,0,.12);
+  border-radius:22px;
+  box-shadow:0 18px 45px rgba(0,0,0,.18);
   overflow:hidden;
 }
 .header{
-  padding:26px 20px 20px;
+  padding:26px 22px 20px;
   text-align:center;
 }
 .header img{
@@ -43,7 +42,7 @@ body{
   margin:0;
   font-size:22px;
   font-weight:900;
-  color:var(--nameBlue);   /* Nombre con el azul correcto */
+  color:var(--nameBlue);
 }
 .header p{
   margin:6px 0 0;
@@ -51,7 +50,7 @@ body{
   color:#000;
   line-height:1.35;
 }
-.content{padding:18px 20px 20px}
+.content{padding:18px 22px 22px}
 .row{
   display:flex;
   align-items:center;
@@ -75,7 +74,7 @@ body{
   color:#000;
 }
 
-/* Botones = MISMO COLOR del nombre, estilo metálico */
+/* Botones: MISMO azul del nombre, metálico */
 button{
   border:none;
   border-radius:14px;
@@ -84,21 +83,21 @@ button{
   font-weight:800;
   cursor:pointer;
   color:#fff;
-  background:linear-gradient(145deg, #185a9d, var(--nameBlue));
+  background:linear-gradient(145deg,#1a5fa8,var(--nameBlue));
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.25),
-    0 4px 10px rgba(11,60,111,.35);
+    0 5px 12px rgba(11,60,111,.45);
 }
 button:active{
   transform:translateY(1px);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.2),
-    0 2px 6px rgba(11,60,111,.4);
+    0 3px 8px rgba(11,60,111,.45);
 }
 
 .actions{
   display:grid;
-  gap:12px;
+  gap:14px;
   margin-top:6px;
 }
 .btn{
@@ -107,17 +106,17 @@ button:active{
   justify-content:center;
   gap:10px;
   width:100%;
-  padding:15px;
-  border-radius:16px;
+  padding:16px;
+  border-radius:18px;
   font-weight:900;
   font-size:15px;
   text-decoration:none;
   cursor:pointer;
   color:#fff;
-  background:linear-gradient(145deg, #185a9d, var(--nameBlue));
+  background:linear-gradient(145deg,#1a5fa8,var(--nameBlue));
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.25),
-    0 6px 14px rgba(11,60,111,.4);
+    0 7px 18px rgba(11,60,111,.5);
 }
 
 .footer{
@@ -125,14 +124,16 @@ button:active{
   padding:14px;
   font-size:12px;
   color:#000;
-  background:#fffdf2;
+  background:#fff7b3;
   border-top:1px solid var(--line);
 }
 </style>
 </head>
 
 <body>
+
 <div class="card">
+
   <div class="header">
     <img src="logo_la_nacional.png" alt="La Nacional de Ahorros y Préstamos">
     <h1>Jardiel Aristy</h1>
@@ -143,6 +144,7 @@ button:active{
   </div>
 
   <div class="content">
+
     <div class="row">
       <div class="text">
         <b>Teléfono</b>
@@ -163,9 +165,12 @@ button:active{
       <a class="btn" href="tel:+18097478057">📞 Llamar ahora</a>
       <button class="btn" id="saveBtn">💾 Guardar contacto</button>
     </div>
+
   </div>
 
-  <div class="footer">Escanea · Guarda · Llama</div>
+  <div class="footer">
+    Escanea · Guarda · Llama
+  </div>
 </div>
 
 <script>
@@ -206,5 +211,6 @@ document.getElementById("saveBtn").addEventListener("click", ()=>{
   setTimeout(()=>URL.revokeObjectURL(url), 500);
 });
 </script>
+
 </body>
 </html>
